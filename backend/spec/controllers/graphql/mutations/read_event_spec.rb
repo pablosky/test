@@ -25,5 +25,11 @@ RSpec.describe 'read event ', type: :request do
       expect(read_event['completed']).to be_truthy
     end
 
+    it 'gives error message when not found' do
+      post('/graphql', params: { query: read_event_mutation(event.id + 1) })
+      read_event = JSON.parse(response.body)['errors'].first
+      expect(read_event['message']).to eq "Couldn't find Event with 'id'=#{event.id + 1}"
+    end
+
   end
 end
