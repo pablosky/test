@@ -14,9 +14,14 @@ const fetchContent = async (updateContent: (content: string) => void) => {
   updateContent(data.content);
 };
 
+interface firstInterface {
+  name: 'ola',
+  address: 'chao'
+}
+
 const App: React.FC = () => {
   const [content, updateContent] = React.useState('Waiting for a response from Rails...');
-
+  const name = 'o';
   React.useEffect(() => {
     fetchContent(updateContent);
   }, []);
@@ -24,6 +29,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
+        <h1>Name is {name}</h1>
         <p>
           {content}
         </p>
