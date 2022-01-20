@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import { gql, useMutation } from '@apollo/client';
 
 function EventCreator(){
 
@@ -11,7 +10,10 @@ function EventCreator(){
   return (
     <React.Fragment>
       <h1>Events creator</h1>
-      <button onClick={() => onClickCreate('clickccccc')} >Press me am a button!</button>
+      <form>
+        <input></input>
+        <button onSubmit={() => onClickCreate('clickccccc')} >Press me am a button!</button>
+      </form>
     </React.Fragment>
   );
 }
