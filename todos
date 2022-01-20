@@ -1,0 +1,5 @@
+1: setup: dockerfiles and working env -> done  2 hrs
+2: define data model -> events, value:[ good, bad,] description string -> done 30 min
+3: expose data model with graphql -> 30 min part1 gems, part model_Typer 2, done
+4: show data model in frontend
+5: put some nice library to show data

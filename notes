@@ -1,0 +1,26 @@
+steps
+
+docker run -it ruby:3.0.2 gem install rails bundler \
+  && rails new exampleapp -d=postgresql --webpack:react --skip-coffee
+
+
+  In Gemfile:
+rails (= 4.2.10) was resolved to 4.2.10, which depends on bundler (< 2.0, >= 1.3.0)
+
+git remote set-url origin git@github.com:pablosky/test.git
+
+happy thoughts
+
+thanks to the open souce community for giving a good boilerplate to start
+
+
+log
+
+1. from webpackcli 4.10 to 4.2 to 4.3 to 4.5 to 4.9 then fix the config cos offcourse doesnt work anymore for 4.9 , 21:00
+
+2. big scare brave browser wasnt allowing the connection backend frontend, just disabling it
+
+3. part 1 uploaded everything went better than expected 00:13
+
+4.
+
