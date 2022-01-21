@@ -1,12 +1,10 @@
 import React from 'react';
 import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
   useQuery,
   useMutation,
   gql
 } from "@apollo/client";
+import ListGroup from 'react-bootstrap/ListGroup'
 
 const EVENTS = gql`
   query { 
@@ -29,7 +27,6 @@ const READ_EVENT = gql`
       }
     }
   `;
-
 
 interface Event {
   id: 1,
@@ -54,12 +51,14 @@ function Events() {
   if (error) return <p>Error :(</p>;
 
   return data.events.map(({ id, category, description, completed }: Event) => (
-    <div key={description}>
-      <p>
-        category: {category} description: {description} completed: {completed.toString()}
-      </p>
-      <button onClick={()=>readEvent(id)}> read</button>
-    </div>
+    <ListGroup.Item key={description}>
+      <div key={description}>
+        <p>
+          category: {category} description: {description} completed: {completed.toString()}
+        </p>
+        <button onClick={()=>readEvent(id)}> read</button>
+      </div>
+    </ListGroup.Item>
   ));
 }
 
