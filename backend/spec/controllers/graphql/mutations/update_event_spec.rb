@@ -24,5 +24,11 @@ RSpec.describe 'update event ', type: :request do
       read_event = JSON.parse(response.body)["data"]['updateEvent']
       expect(read_event['name']).to eq 'new name'
     end
+
+    it 'shows errors for not found' do
+      post('/graphql', params: { query: update_event_data_mutation(args: {id: (event.id + 2), name: 'new name', value: 1, description: 'new desc'}) })
+      error = JSON.parse(response.body)["errors"]
+      expect(error.first['message']).to eq "Couldn't find Event with 'id'=#{event.id + 2}"
+    end
   end
 end

@@ -8,8 +8,8 @@ import {
 } from "@apollo/client";
 
 const CREATE_EVENT = gql`
-    mutation CreateEvent($description: String!){
-      createEvent(input: { description: $description }) {
+    mutation CreateEvent($description: String!, $name: String!){
+      createEvent(input: { description: $description, name: $name }) {
         id
         description
         category
@@ -36,11 +36,13 @@ function EventCreator(){
   ],});
 
   const [descriptionForm, setDescriptionForm] = useState('');
+  const [nameForm, setNameForm] = useState('');
+
 
   const handleSubmit = (event:any) => {
     event.preventDefault();
     alert(`The description you entered was: ${descriptionForm}`);
-    createEvent({variables: {description: descriptionForm}})
+    createEvent({variables: {description: descriptionForm, name: nameForm}})
   }
 
   return (
@@ -48,6 +50,13 @@ function EventCreator(){
       <h1>Events creator</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Name</Form.Label>
+          <input
+            className="text-muted"
+            name={'name'}
+            value={nameForm}
+            onChange={(e) => setNameForm(e.target.value)}
+          />
           <Form.Label>Description</Form.Label>
           <input
             className="text-muted"

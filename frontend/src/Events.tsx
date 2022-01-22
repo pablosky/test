@@ -15,6 +15,7 @@ const EVENTS = gql`
   query events($from: ISO8601DateTime!, $to: ISO8601DateTime!){ 
     events (from: $from, to: $to) {
       id
+      name
       category
       description
       completed
@@ -26,6 +27,7 @@ const READ_EVENT = gql`
     mutation ReadEvent($eventId: ID!){
       readEvent(input: {eventId: $eventId}) {
         id
+        name
         description
         category
         completed
@@ -37,6 +39,7 @@ const DELETE_EVENT = gql`
   mutation DeleteEvent($eventId: ID!){
     deleteEvent(input: {eventId: $eventId}) {
       id
+      name
       description
       category
       completed
