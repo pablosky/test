@@ -13,4 +13,5 @@
 #
 class Event < ApplicationRecord
   #add enum category
+  enum category: { bug: 0, unauthorized_access: 1, spam: 2, other: 3 }
 end

@@ -2,6 +2,7 @@ module Mutations
   class CreateEvent < BaseMutation
     argument :description, String, required: false
     argument :name, String, required: false
+    argument :value, Integer, required: false
     
     type Types::EventType
 

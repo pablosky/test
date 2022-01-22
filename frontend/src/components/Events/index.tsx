@@ -19,6 +19,7 @@ const EVENTS = gql`
       category
       description
       completed
+      value
     }
   }
 `;
@@ -43,15 +44,18 @@ const DELETE_EVENT = gql`
       description
       category
       completed
+      value
     }
   }
 `;
 
 interface Event {
   id: 1,
-  category: '0',
-  description: 'descript',
-  completed: false
+  category: '',
+  description: '',
+  completed: false,
+  name: '',
+  value: 0
 }
 
 function Events() {

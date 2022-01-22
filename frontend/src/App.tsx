@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import {EventCreator} from './EventCreator';
-import {EventsSearch} from './EventsSearch';
-import {Events} from './Events';
+import {EventCreator} from './components/EventCreator';
+import {EventsSearch} from './components/EventsSearch';
+import {Events} from './components/Events';
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,12 +15,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
-
-function EventsCounter(){
-  return (
-    <h1>Events counter</h1>
-  );
-}
 
 const client = new ApolloClient({
   uri: 'http://backend.localhost/graphql',
@@ -36,13 +30,13 @@ const App: React.FC = () => {
       <div className="App">
         <header className="App-header">
           <Container>
+            <h1>Test</h1>
             <Row xs={2}>
               <Col>
-                <EventsCounter />
                 <EventCreator/>
               </Col>
               <Col>
-                <h2>Events!</h2>
+                <h2>Events List</h2>
                 <EventsSearch searchValue={searchValue} setSearchValue={setSearchValue}></EventsSearch>
                 <ListGroup><Events /></ListGroup>
               </Col>

@@ -3,21 +3,25 @@
 3: expose data model with graphql -> 30 min part1 gems, part model_Typer 2, done
 4: show data model in frontend -> done 
 5: put some nice library to show data -> using bootstrap done.
-
-
-
-6. update event
-7. clean that variable called completed boolean on event
+6. update event -> needs form
+7. clean that variable called completed boolean on event -> dibe
 8. categories for event
 
 must have: 
+9. order data model: add name, value, done 
+10. add from to events query -> done
 
-order data model: add name, value, done 
+11. update form
+12. folders order 
+13. routing for updating and showing different screens
+14. metrics calculation by hour/minute/day
+
 design and apply cleaner UI
-add from to events query
+readme
+seed file
 
 
 nice to haves: 
 1. some sort of service that does something more complicated
-2. some way to load data faster
+2. some way to import data faster
 3. jest testing
