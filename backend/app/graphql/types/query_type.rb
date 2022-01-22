@@ -5,11 +5,13 @@ module Types
     include GraphQL::Types::Relay::HasNodesField
 
     field :events, [EventType], null: true do
-      description 'shows all events' 
+      description 'shows all events'
+      argument :from, GraphQL::Types::ISO8601DateTime, required: true
+      argument :to, GraphQL::Types::ISO8601DateTime, required: true
     end
 
-    def events
-      Event.all
+    def events(from: , to: )
+      Event.where(created_at: (from..to))
     end
   end
 end
