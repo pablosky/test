@@ -1,6 +1,8 @@
 # Setup
 $ docker-compose run frontend yarn
+
 $ docker-compose run backend bin/rails db:create db:migrate
+
 $ docker-compose exec -it backend rails c -> DataGenerator.call
 
 # Start
