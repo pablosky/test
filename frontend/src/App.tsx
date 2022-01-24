@@ -6,6 +6,7 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
+  HttpLink,
   useQuery,
   gql
 } from "@apollo/client";
@@ -18,9 +19,13 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import {EventsMetrics} from './components/EventsMetrics';
 
+import fetch from 'cross-fetch'; 
+
+const httpLink = new HttpLink({ uri: 'http://backend.localhost/graphql', fetch });
+
 const client = new ApolloClient({
-  uri: 'http://backend.localhost/graphql',
-  cache: new InMemoryCache()
+  link: httpLink,
+  cache: new InMemoryCache(),
 });
 
 function CreateEventModal() {

@@ -26,3 +26,7 @@ The combination, Rails + PostgreSQL + Docker Compose, is just a result I followe
 ### Frontend
 
 It consist of very thin webpack settings, TypeScript config, and Jest.
+
+### run frontend tests
+
+$  docker-compose run frontend npm test
