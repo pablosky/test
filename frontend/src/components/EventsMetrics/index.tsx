@@ -7,6 +7,7 @@ import Form from 'react-bootstrap/Form';
 import moment from 'moment';
 import { Chart } from "react-google-charts";
 import DateTimePicker from 'react-datetime-picker';
+import Container from 'react-bootstrap/Container';
 
 const EVENTS_METRICS = gql`
   query eventsMetrics($from: ISO8601DateTime!, $to: ISO8601DateTime!, $rangeFilter: String!){ 
@@ -36,17 +37,19 @@ function LineChart({metrics_data, rangeFilter}:any){
   });
   
   console.log('metrics data' ,metrics_data);
-  processed_data2.unshift(['DateTime','Data value average']);
+  processed_data2.unshift(['DateTime','Average']);
   
   return(
     <React.Fragment>
-      <Chart
-        chartType="Line"
-        width="100%"
-        height="400px"
-        data={processed_data2}
-        options={options}
-        />
+      <Container>
+        <Chart
+          chartType="Line"
+          width="100%"
+          height="500px"
+          data={processed_data2}
+          options={options}
+          />
+      </Container>
     </React.Fragment>
   );
 }
@@ -64,8 +67,8 @@ function EventsMetrics() {
 
   return (
     <React.Fragment>
-      <h1>Metrics!</h1>
-      <Form >
+      <Form style={{backgroundColor: 'white'}}>
+        <h1 style={{color: 'black'}}>Metrics!</h1>
         <Form.Group>
           <DateTimePicker
             onChange={setFrom}
@@ -79,8 +82,8 @@ function EventsMetrics() {
           />
         </Form.Group>
         <Form.Group>
-          <label>
-            Pick your favorite flavor:
+          <label style={{color: 'black'}}>
+            Pick your range:
             <select value={rangeFilter} onChange={(e) => setRangeFilter(e.target.value)}>
               <option value="day">Day</option>
               <option value="hour">Hour</option>

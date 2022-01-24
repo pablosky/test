@@ -9,7 +9,6 @@ import {
   HttpLink,
   gql,
 } from "@apollo/client";
-//import TestRenderer from 'react-test-renderer';
 import { MockedProvider } from '@apollo/client/testing';
 import moment from 'moment';
 import fetch from 'cross-fetch'; 

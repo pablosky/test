@@ -57,7 +57,7 @@ const App: React.FC = () => {
       <div className="App">
         <header className="App-header">
           <Container>
-            <Row>
+            <Row style={{width: '100%'}}>
               <EventsMetrics/>
             </Row>
             <h1>Test</h1>
