@@ -16,6 +16,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import {EventsMetrics} from './components/EventsMetrics';
 
 const client = new ApolloClient({
   uri: 'http://backend.localhost/graphql',
@@ -55,6 +56,9 @@ const App: React.FC = () => {
       <div className="App">
         <header className="App-header">
           <Container>
+            <Row>
+              <EventsMetrics/>
+            </Row>
             <h1>Test</h1>
             <Row xs={2}>
               <Col>

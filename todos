@@ -6,22 +6,33 @@
 6. update event -> needs form
 7. clean that variable called completed boolean on event -> dibe
 8. categories for event
-
-must have: 
 9. order data model: add name, value, done 
 10. add from to events query -> done
+11. folders order -> done
+12. add filter for events list done
+13. add category and created_at for creation of event
+12. metrics calculation by hour/minute/day -> 
+    tengo filtro de fecha y tengo filtro de agrupacion minute/hour/day
+    event como agruparlos 
 
-11. update form
-12. folders order 
-13. routing for updating and showing different screens
-14. metrics calculation by hour/minute/day
+    ADD EVENTS_GROUPED QUERY IN BACKEND
+     a = Event.group_by_minute(:created_at).sum(:value), me da un hash con {fecha=>valor de suma, fecha2=>valordesuma2}
 
+15. add generation of data method
+13. routing for updating and showing different screens react router found
 design and apply cleaner UI
 readme
 seed file
-
 
 nice to haves: 
 1. some sort of service that does something more complicated
 2. some way to import data faster
 3. jest testing
+14. update form
+4. apollo client for import
+
+diseño de creacion de data
+
+2 en el mismo segundo
+4 horas del dia 
+cada hora genera 60 minutos de data, cada minuto 2 por segundo 

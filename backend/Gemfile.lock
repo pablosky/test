@@ -92,6 +92,8 @@ GEM
       railties
       sprockets-rails
     graphql (1.13.5)
+    groupdate (6.0.1)
+      activesupport (>= 5.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.5)
@@ -237,6 +239,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   graphiql-rails
   graphql
+  groupdate
   jbuilder (~> 2.11)
   listen (~> 3.7)
   pg (>= 0.18, < 2.0)
