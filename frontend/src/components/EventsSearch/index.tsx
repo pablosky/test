@@ -16,7 +16,8 @@ interface Event {
   description: '',
   completed: false,
   name: '',
-  value: 0
+  value: 0,
+  createdAt: ''
 }
 
 interface EventsList {
@@ -32,6 +33,7 @@ const EVENTS = gql`
       description
       completed
       value
+      createdAt
     }
   }
 `;
@@ -102,13 +104,14 @@ function EventsSearch({searchValue, setSearchValue} : any){
         <input type= "datetime" onChange={(e) => setTo(e.target.value)} value={to}/>
         <button>Filter</button>
        </form>
-       {data.events.map(({ id, name, value, category, description, completed }: Event) => (
-        <ListGroup.Item key={description}>
-          <Row key={description}>
+       {data.events.map(({ id, name, value, category, description, completed, createdAt }: Event) => (
+        <ListGroup.Item key={id}>
+          <Row >
             <Col xs={8}>
               <p>
                 name: {name} value: {value}
               </p>
+              <p>created_at: {createdAt}</p>
               <p>
                 category: {category} description: {description} completed: {completed.toString()}
               </p>

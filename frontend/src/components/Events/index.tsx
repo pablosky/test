@@ -93,8 +93,8 @@ function Events() {
   if (error) return <p>Error :(</p>;
 
   return data.events.map(({ id, name, value, category, description, completed }: Event) => (
-    <ListGroup.Item key={description}>
-      <Row key={description}>
+    <ListGroup.Item key={id}>
+      <Row>
         <Col xs={8}>
           <p>
             name: {name} value: {value}
