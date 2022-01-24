@@ -34,7 +34,8 @@ function LineChart({metrics_data, rangeFilter}:any){
     }
     return rObj;
   });
-
+  
+  console.log('metrics data' ,metrics_data);
   processed_data2.unshift(['DateTime','Data value average']);
   
   return(
