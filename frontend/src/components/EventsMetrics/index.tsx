@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import moment from 'moment';
 import { Chart } from "react-google-charts";
 import DateTimePicker from 'react-datetime-picker';
+import { LoaderOptionsPlugin } from 'webpack';
 
 const ledata = [
   [
@@ -45,7 +46,7 @@ const EVENTS_METRICS = gql`
   }
 `;
 
-function LineChart({data, rangeFilter}:any){
+function LineChart({data, rangeFilter, loading}:any){
   const options = {
     chart: {
       title: "Average values",
@@ -54,24 +55,7 @@ function LineChart({data, rangeFilter}:any){
   };
   console.log('metrics', data);
   console.log('rangefilter', rangeFilter);
-  // if(data? && data?.metrics?.length > 0){
-  //   // data?.metrics?.map((obj: any) => {
-  //   //       let rObj = [];
-  //   //       rObj[0] = new Date(obj[0]);
-  //   //       if(obj[1]===null){
-  //   //         rObj[1] = 0;
-  //   //       }else{
-  //   //       rObj[1] = parseFloat(obj[1]);
-  //   //       }
-  //   //       return rObj
-  //   //     });
-  //   console.log('dsa');
-  // }
-  //console.log('metrics', data?.metrics?.length);
-
-  //if (data && data?.metrics?.length == 0) return <p>No data! choose another date...</p>;
-  const numbers = [4, 9, 16, 25];
-  const miles = data?.map(function(element:any) {
+  const miles = data?.metrics?.map(function(element:any) {
     let rObj = [];
     rObj[0] = new Date(element[0]);
     if(element[1]===null){
@@ -81,8 +65,10 @@ function LineChart({data, rangeFilter}:any){
     }
     return rObj
   });
-  
-  console.log('dsa', miles);
+
+  console.log('miles', miles);
+  if(data && data?.metrics?.length == 0) return <p>NO DATA</p>
+  if(loading) return <p>loading</p>
 
   return(
     <Chart
@@ -94,21 +80,44 @@ function LineChart({data, rangeFilter}:any){
       />
   );
 }
+function loadr(metrics:any){
+  const met = metrics?.map(function(element:any) {
+    let rObj = [];
+    rObj[0] = new Date(element[0]);
+    if(element[1]===null){
+      rObj[1] = 0;
+    }else{
+    rObj[1] = parseFloat(element[1]);
+    }
+    return rObj;}
+  console.log('le met', met);
+}
 
 function EventsMetrics() {
   
   const [from, setFrom] = useState(new Date());
   const [to, setTo] =  useState(new Date());
   const [rangeFilter, setRangeFilter] =  useState('day');
-  const [metrics, setMetrics] = useState([]);
 
   const { loading, error, data } = useQuery(EVENTS_METRICS, { variables: {from: moment(from).toISOString(),to: moment(to).toISOString(), rangeFilter: rangeFilter}});
   
-  useEffect(() => {
-    useQuery(EVENTS_METRICS, { variables: {from: moment(from).toISOString(),to: moment(to).toISOString(), rangeFilter: rangeFilter}}).then(data => setMetrics(data.metrics));
-      console.log(metrics);
-  }, []);
-
+  // useEffect(async () => {
+  //   const metric = await data;
+  //   console.log('metric data', metric);
+  //   // const miles = data?.metrics?.map(function(element:any) {
+  //   //   let rObj = [];
+  //   //   rObj[0] = new Date(element[0]);
+  //   //   if(element[1]===null){
+  //   //     rObj[1] = 0;
+  //   //   }else{
+  //   //   rObj[1] = parseFloat(element[1]);
+  //   //   }
+  //   //   return rObj
+  //   // });
+  //   if(metric && metric?.metrics?.length > 0){
+  //     console.log('miles', metric.metrics);
+  //   }
+  // }, [data] );
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
@@ -140,7 +149,8 @@ function EventsMetrics() {
           </label>
         </Form.Group>
       </Form>
-     <LineChart metrics={data.metrics} rangeFilter={rangeFilter}/>
+      {/* {renderMetric(data?.metrics)} */}
+     <LineChart metrics={data} rangeFilter={rangeFilter} loading={loading}/>)
     </React.Fragment>
   );
 

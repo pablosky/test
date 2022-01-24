@@ -20,7 +20,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # gem 'factory_bot'
   # gem 'factory_bot_rails'
-  # gem 'faker'
+  gem 'faker'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'shoulda-matchers' # very useful for validations in models
